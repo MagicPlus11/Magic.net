@@ -1,0 +1,143 @@
+body {
+  background-color: black
+}
+
+h2 {
+  color: whitesmoke;
+
+}
+
+p {
+  color:white ;
+}
+
+button {
+  color: black;
+  background-color: white
+}
+
+button {
+  border-radius: 5px; /* Adjust the value for the desired curve */
+}
+
+button {
+  background-color: #007bff; /* Blue background (or your preferred color) */
+  color: white; /* White text */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Adjust font size */
+  font-weight: 500; /* Slightly bolder text */
+  cursor: pointer; /* Make it look clickable */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* More pronounced shadow on hover */
+}
+
+button:active {
+  background-color: whitesmoke; /* Even darker blue on click */
+  transform: translateY(0); /* Reset transform on click */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reset shadow on click */
+}
+
+button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Add a custom focus ring */
+}
+
+button {
+  /* ... other styles ... */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), /* Main shadow (bottom-right) */
+              -1px -1px 3px rgba(255, 255, 255, 0.2); /* Highlight shadow (top-left) */
+}
+
+button:hover {
+  /* ... other hover styles ... */
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.4), /* More pronounced shadow on hover */
+              -2px -2px 5px rgba(255, 255, 255, 0.3); /* Stronger highlight on hover */
+  transform: translateY(-1px); /* Tiny lift effect on hover */
+}
+
+button:active {
+  /* ... other active styles ... */
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2); /* Inset shadow on click */
+  transform: translateY(0); /* Reset transform on click */
+}
+
+button {
+  /* ... other styles ... */
+  perspective: 800px; /* Creates a 3D space */
+  transform-style: preserve-3d; /* Important for 3D transforms */
+  transform: rotateX(-5deg); /* Slight tilt */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  transform: rotateX(-7deg) translateY(-2px); /* More tilt and lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: rotateX(-5deg) translateY(0); /* Reset transform on click */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  /* ... other styles ... */
+  position: relative; /* Needed for absolute positioning of pseudo-element */
+  overflow: hidden; /* Prevents pseudo-element from spilling out */
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1); /* Subtle darker overlay */
+  transform: translateZ(-2px); /* Push the overlay slightly back */
+  transition: background-color 0.3s ease;
+}
+
+button:hover::before {
+  background-color: rgba(0, 0, 0, 0.2); /* Darker overlay on hover */
+}
+
+button:active::before {
+  background-color: rgba(0, 0, 0, 0.3); /* Even darker on click */
+}
+
+/* style.css */
+
+/* General styles (you might already have these) */
+body {
+  /*... your existing body styles... */
+}
+
+h2, p {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+h2 {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.video-js-progress-control { /* Replace with the appropriate class for your video player */
+
+  visibility: hidden; /* Or opacity: 0; to completely hide the element */
+
+border-right:  {
+  color: #FFFEFE;
+}
