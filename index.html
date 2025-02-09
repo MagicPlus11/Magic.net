@@ -1,102 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Magic.org</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic - Tech News</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Include Bebas Neue from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Bebas Neue', sans-serif;
+            padding-bottom: 60px;
+        }
 
-  <link rel="stylesheet" href="style.css">
+        .kebab-menu {
+            position: relative;
+            display: inline-block;
+        }
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/brands.min.css" integrity="sha512-QH1LgIu+/AMwFQUhCZxzXHzhOmyrAH74cj6Q35quQVYONu72vd5INbC1cgER+Cbjdk6xIfYdV5xtsAAMwpxd7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        .kebab-icon {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: center;
+        }
 
-<style> <body>
-  {
-    background-color: #000000
-  }
-</body>
-  <style>
-    h2, p {
-      font-family: 'Bebas Neue', sans-serif;
-    }
+        .dot {
+            width: 4px;
+            height: 4px;
+            background-color: white;
+            border-radius: 50%;
+        }
 
-    h2 {
-      font-size: 50px; /* Adjust size as needed */
-      text-align:left; /* left the title */
-      margin-top: 20px; /* Adds spacing from the top */
-    }
+        .kebab-menu-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #252525;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            z-index: 1000;
+        }
 
-    p {
-      font-size: 20px; /* Adjust as needed */
-    }
-  </style>
+        .kebab-menu-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 1rem;
+        }
+
+        .kebab-menu-content a:hover {
+            background-color: #333;
+        }
+
+        .kebab-menu:hover .kebab-menu-content {
+            display: block;
+        }
+
+        /* Rest of your existing styles remain the same */
+        header {
+            background-color: #1a1a1a;
+            padding: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: #ffffff;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            background: #252525;
+            color: #ffffff;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 1rem auto;
+            padding: 0 1rem;
+        }
+
+        .featured {
+            background-color: #1a1a1a;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid #333;
+        }
+
+        .featured h2 {
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .news-card {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            border: 1px solid #333;
+        }
+
+        .news-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .news-card p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 0.6rem;
+            color: #dddddd;
+        }
+
+        .date {
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #1a1a1a;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0.8rem 0;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .news-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <h2>Magic</h2> <!-- Moved inside <body> and placed at the top -->
-<mic>
-  <br />
-  <br>
-  <label for="1000">1000</label>
-<img srcset="S25-Series.jpg" src="" alt=Galaxy-S25-Series width="300">
-  <p>Samsung Galaxy S25 Series——> Everything You Need to Know <br /> 
-  Samsung’s latest flagship, the Galaxy S25 series, has officially been unveiled, bringing cutting-edge technology, sleek design, and industry-first features to the forefront. Let’s dive into the details of the new lineup, including its features, pricing, and availability. <br />
-  <br />
-  <br>
+    <header>
+        <div class="header-content">
+            <div class="mobile-header">
+                <a href="#" class="logo">MAGIC</a>
+                <div class="kebab-menu">
+                    <button class="kebab-icon">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </button>
+                    <div class="kebab-menu-content">
+                        <a href="#">Settings</a>
+                        <a href="#">Profile</a>
+                        <a href="#">Notifications</a>
+                        <a href="#">Help Center</a>
+                        <a href="#">Sign Out</a>
+                    </div>
+                </div>
+            </div>
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Search news...">
+            </div>
+        </div>
+    </header>
 
-  <strong>Models and Pricing</strong>
-  <br />
-  Samsung has introduced three models in the Galaxy S25 series, each catering to a different audience-
-  <br />
-  ▪︎<strong>Galaxy S25-</strong> Starting at ₹85,000 for the 128GB variant, it is the entry-level model of the series.<br />
-<video src="S25.mp4" autoplay muted loop width="300" playsinline></video>
-<br />
-<br>
+    <main>
+        <section class="featured">
+            <h2>BREAKING NEWS</h2>
+            <p>Revolutionary Quantum Computer Achieves New Milestone</p>
+            <span class="date">February 9, 2025</span>
+        </section>
 
-  ▪︎<strong>Galaxy S25 Plus–</strong> Priced from ₹1,09,000, this variant offers enhanced features and a larger display.
-  <br />
-  <video src="S25-Plus.mp4" autoplay muted loop width="300" playsinline></video>
-<br />
-  <br />
-  
-  ▪︎ <strong>Galaxy S25 Ultra—</strong> The flagship model starts at ₹1,38,000, with the top-end 1TB version priced at ₹1,70,000.  
-  <br />
-  <video src="S25-Ultra.mp4" autoplay muted loop width="300" playsinline></video>
+        <div class="news-grid">
+            <article class="news-card">
+                <h3>AI BREAKTHROUGH</h3>
+                <p>New AI Model Demonstrates Advanced Reasoning Capabilities</p>
+                <span class="date">February 9, 2025</span>
+            </article>
 
-  <br>
-<br />
-  <strong>Key Features</strong>  <br />
-  1》 <strong>Advanced AI Integration</strong> <br /> 
-  Samsung is taking AI to the next level with the Galaxy S25 series. The phones can now learn user habits and anticipate needs. AI also powers features such as- 
-  ▪︎<strong>Video Enhancements-</strong> Remove unwanted sounds from your recordings.
-  <br />
-  ▪︎ <strong>Music Recognition-</strong> Identify songs playing in the background.  
-<br>
-  2》 <strong>Wireless Charging Innovation</strong>  
-  The Galaxy S25 series is the first in the world to support the Qi2.1 wireless charging standard. This technology improves charging speed and energy
-  efficiency. To maintain the phone’s slim profile, Samsung has relocated the necessary magnets to compatible protective cases.  
-<br>
-  3》 <strong>Snapdragon 8 Elite Processor</strong>-  
-  All models in the series are powered by Qualcomm’s Snapdragon 8 Elite chipset, delivering industry-leading performance and efficiency. <br> 
+            <article class="news-card">
+                <h3>SPACE TECH</h3>
+                <p>Private Space Companies Announce Joint Mars Mission</p>
+                <span class="date">February 9, 2025</span>
+            </article>
 
-  4》 <strong>Refined Design</strong>  
-  The series features:  
-  ▪︎ Slimmer bezels for an immersive viewing experience.  
-  ▪︎ Distinct designs: While the Galaxy S25 and S25+ have rounded edges, the S25 Ultra boasts a boxier, 
-  premium design.  
-<br>
-  <b>Availability</b>-
-  The Galaxy S25 series was officially launched during the Galaxy Unpacked 2025 event on January 22, 2025. Pre-orders are now open, and the devices will be available globally starting February 7, 2025.  
-<br />
-  <strong>Why Choose the Galaxy S25 Series ?</strong>  <br>
-  With features like industry-first wireless charging, powerful AI capabilities, and top-tier performance, the Galaxy S25 series sets a new standard for flagship smartphones. Whether you’re a tech enthusiast or an everyday user, there’s a model tailored to your needs. 
-  <br />
-  </p>
+            <article class="news-card">
+                <h3>FUTURE MOBILITY</h3>
+                <p>Flying Cars Enter Final Testing Phase</p>
+                <span class="date">February 9, 2025</span>
+            </article>
+        </div>
+    </main>
+
+    <nav>
+        <div class="nav-links">
+            <a href="#">HOME</a>
+            <a href="#">TECH</a>
+            <a href="#">GADGETS</a>
+            <a href="#">AI</a>
+            <a href="#">REVIEWS</a>
+        </div>
+    </nav>
 </body>
 </html>
-
-
-
-
